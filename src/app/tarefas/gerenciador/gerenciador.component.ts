@@ -7,23 +7,20 @@ import { Component } from '@angular/core';
 })
 export class GerenciadorComponent {
   titulo = 'Gerenciador de Tarefas';
-  novaTarefa = ''; // Captura do input via [(ngModel)]
+  novaTarefa = ''; 
   tarefas: { nome: string; concluida: boolean }[] = [];
 
-  // Adiciona nova tarefa
   adicionarTarefa() {
     if (this.novaTarefa.trim()) {
       this.tarefas.push({ nome: this.novaTarefa, concluida: false });
-      this.novaTarefa = ''; // Limpa o input
+      this.novaTarefa = ''; 
     }
   }
 
-  // Marca uma tarefa como concluída
   concluirTarefa(index: number) {
     this.tarefas[index].concluida = true;
   }
 
-  // Alternar visibilidade da lista
   mostrarLista = true;
   alternarLista() {
     this.mostrarLista = !this.mostrarLista;
