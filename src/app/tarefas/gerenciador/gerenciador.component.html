@@ -1,0 +1,23 @@
+<p>gerenciador de tarefas!</p>
+<div class="container">
+    <h2>{{ titulo }}</h2>
+    <p>Total de tarefas: {{ tarefas.length }}</p>
+  
+    <input type="text" [(ngModel)]="novaTarefa" placeholder="Digite uma tarefa">
+    <button (click)="adicionarTarefa()">Adicionar</button>
+    <button (click)="alternarLista()">
+      {{ mostrarLista ? 'Ocultar Lista' : 'Mostrar Lista' }}
+    </button>
+  
+    <ul *ngIf="mostrarLista">
+      <li *ngFor="let tarefa of tarefas; let i = index" 
+          [ngClass]="{ 'tarefa-concluida': tarefa.concluida }"
+          [ngStyle]="{ color: tarefa.concluida ? 'gray' : 'black' }">
+        {{ tarefa.nome }}
+        <button (click)="concluirTarefa(i)" [disabled]="tarefa.concluida">
+          Concluir
+        </button>
+      </li>
+    </ul>
+  </div>
+  
